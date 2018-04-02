@@ -1,5 +1,10 @@
-class Document < ActiveRecord::Base
-  belongs_to :post
+class Document
+  extend Refile::Attachment
+  attr_accessor :file_id
 
-  attachment :file
+  attachment :file, type: :image
+
+  def initialize(attributes = {})
+    self.file = attributes[:file]
+  end
 end

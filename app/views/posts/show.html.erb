@@ -1,7 +1,7 @@
-<h1><%= @post.title %></h1>
+<h1><%= @post %></h1>
 
 <p>
-  <%= link_to "Edit post", [:edit, @post], class: "btn btn-primary" %>
+  <%= link_to "Edit post", [:edit_post, @post], class: "btn btn-primary" %>
   <%= link_to "Delete post", @post, data: { method: "delete", confirm: "Are you sure?" }, class: "btn btn-danger" %>
 </p>
 
@@ -19,6 +19,7 @@
   </thead>
 
   <tbody>
+  <% if false %>
     <% @post.documents.each do |document| %>
       <tr>
         <th><%= link_to document.file_filename, attachment_url(document, :file) %></th>
@@ -26,8 +27,9 @@
         <th><%= number_to_human_size document.file_size %></th>
       </tr>
     <% end %>
+  <% end %>
   </tbody>
 
 </table>
 
-<%= simple_format @post.body %>
+<%#= simple_format @post.body %>

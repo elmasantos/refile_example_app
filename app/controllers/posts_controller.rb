@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(documents: [])
   end
 
   def show
-    @post = Post.find(params[:id])
+    post = Post.find
   end
 
   def create
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    post = Post.find
   end
 
   def update
@@ -34,14 +34,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to :posts
+   # @post = Post.find(params[:id])
+   # @post.destroy
+   # redirect_to :posts
   end
 
 private
 
   def post_params
-    params.require(:post).permit(:title, :image, :body, documents_files: [])
+    params.require(:post).permit(:title, documents_files: [])
   end
 end
