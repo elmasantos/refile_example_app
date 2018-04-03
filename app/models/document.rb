@@ -2,7 +2,7 @@ class Document
   extend Refile::Attachment
   attr_accessor :file_id
 
-  attachment :file, type: :image
+  attachment :file
 
   def initialize(attributes = {})
     self.file = attributes[:file]

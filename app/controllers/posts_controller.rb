@@ -1,42 +1,13 @@
 class PostsController < ApplicationController
-  def index
-    @post = Post.all
-  end
-
   def new
-    @post = Post.new(documents: [])
-  end
-
-  def show
-    post = Post.find
+    @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to @post
-    else
-      render :new
-    end
-  end
+    @post = Post.new
+    @post.documents_files = post_params[:documents_files]
 
-  def edit
-    post = Post.find
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    if @post.update_attributes(post_params)
-      redirect_to @post
-    else
-      render :new
-    end
-  end
-
-  def destroy
-   # @post = Post.find(params[:id])
-   # @post.destroy
-   # redirect_to :posts
+    redirect_to @post
   end
 
 private
